@@ -7,3 +7,12 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(100))
     name = db.Column(db.String(100), unique = True)
     profilepicture = db.Column(db.String(1000))
+
+class User2(UserMixin):
+    
+    id = ""
+    password = ""
+    user_name = ""
+    profile_picture = ""
+    friend_code = ""
+    actual_place = ""

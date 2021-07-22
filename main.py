@@ -1,18 +1,24 @@
 ########################################################################################
 ######################          Import packages      ###################################
 ########################################################################################
-from flask import Blueprint, render_template, flash
+from Poketrader import Poketrader
+from flask import Blueprint, render_template, flash ,url_for
 from flask_login import login_required, current_user
-from __init__ import create_app, db
+from __init__ import create_app, db, BOB
 
 ########################################################################################
+
 # our main blueprint
 main = Blueprint('main', __name__)
 
 @main.route('/') # home page that return 'index'
 def index():
-    return render_template('index.html')
-
+    randoms = BOB.give_random_searchs_and_offers()
+    searches = randoms[0]
+    offers = randoms[1]
+    #return render_template('index.html')
+    return(render_template('index.html',suchen = searches, angebote = offers)) 
+    
 @main.route('/profile') # profile page that return 'profile'
 @login_required
 def profile():

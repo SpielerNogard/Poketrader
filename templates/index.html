@@ -1,12 +1,56 @@
 {% extends "base.html" %}
 
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static',filename='styles/bosses.css') }}">
 <h1 class="title">
-    Flask Login Example
+    Poketrader
 </h1>
 <h2 class="subtitle">
-    Create a Login page using Flask :)
+    Deine Tauschplattform für Pokemon Go
 </h2>
+{% if suchen %}
+    <h2><strong>Hier sind ein paar zufällige Suchen</strong></h2>
+        {%for i in suchen%}
+        <div class="blog-card">
+            <div class="meta">
+              <div class="photo" style="background-image: url(https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon%20-%20256x256/{{i[7]}})"></div>    
+            </div>
+            <div class="description">
+              <h1>{{i[3]}}</h1>
+              <h2>User: {{i[1]}}</h2>
+              <p>is_shiny: {{i[4]}}</p>
+              <p>Anzahl: {{i[6]}}</p>
+              <p>Ort: {{i[5]}}</p>
+            </div>
+        </div>
+
+        
+        {%endfor%}
+{% endif %}
+
+{% if angebote %}
+    <h2><strong>Hier sind ein paar zufällige Angebote</strong></h2>
+        {%for i in angebote%}
+        <div class="blog-card">
+            <div class="meta">
+              <div class="photo" style="background-image: url(https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon%20-%20256x256/{{i[7]}})"></div>
+              
+            </div>
+            <div class="description">
+              <h1>{{i[3]}}</h1>
+              <h2>User: {{i[1]}}</h2>
+              <p>is_shiny: {{i[4]}}</p>
+              <p>Anzahl: {{i[6]}}</p>
+              <p>Ort: {{i[5]}}</p>
+              
+                
+            </div>
+          </div>
+
+        
+        {%endfor%}
+{% endif %}
+
 {% endblock %}
 
 
