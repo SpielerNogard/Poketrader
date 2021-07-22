@@ -1,5 +1,4 @@
 import mariadb
-
 import config
 
 
