@@ -4,4 +4,36 @@
 <h1 class="title">
     Welcome, {{name}}!
 </h1>
+{% if user_data %}
+<form method="POST" action="/profile">
+    <div class="field">
+        <div class="control">
+            <input class="input is-large" type="text" name="code" placeholder="Freundescode" autofocus="" value="{{user_data[3]}}">Dein Freundescode</input>
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <input class="input is-large" type="text" name="profilepic" placeholder="Profilbild" autofocus="" value="{{user_data[2]}}">Dein Profilbild</input>
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <label>Ort:
+            <select name="orte" size="1">
+              <option>Köthen</option>
+              <option>Dessau</option>
+              <option>Lübben</option>
+              <option>Lübbenau</option>
+              <option>Schönewalde</option>
+            </select>
+        </label>
+        </div>
+    </div>
+
+    <button class="button is-block is-info is-large is-fullwidth">Daten ändern</button>
+</form>
+
+
+{% endif %}
+
 {% endblock %}

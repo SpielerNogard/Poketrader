@@ -1,0 +1,22 @@
+
+        enthalten = False
+        suche_anzahl = 0
+        SQL_suche_sql = "SELECT * FROM suchen WHERE username = '"+str(username)+"';"
+        SQL_suche = self.KARL.read_data(SQL_suche_sql)
+        for suche in SQL_suche:
+            print(suche)
+            username_suche = suche[1]
+            pokemon_name_suche = suche[3]
+            suche_anzahl = suche[6]
+            if pokemon_name_suche == pokemon_name:
+                enthalten = True
+                suche_anzahl = suche_anzahl+anzahl
+
+        if enthalten == False:
+            SQL = "Insert into suchen(username, pokemon_id, pokemon_name, is_shiny,ort,anzahl,image) values('"+username+"',"+str(pokemon_id)+",'"+pokemon_name+"','"+str(is_shiny)+"','"+ort+"',"+str(anzahl)+",'"+image+"');"
+            self.KARL.write_data(SQL)
+        else:
+            print("Ist bereits enthalten bitte updaten")
+            print("Die neue Anzahl = ",str(suche_anzahl))
+            SQL_UPDATE = "UPDATE suchen SET anzahl = "+str(suche_anzahl)+" WHERE username = '"+str(username)+"' and pokemon_name = '"+str(pokemon_name)+"';"
+            self.KARL.write_data(SQL_UPDATE)
